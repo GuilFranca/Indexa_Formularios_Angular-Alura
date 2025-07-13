@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ContainerComponent } from '../../componentes/container/container.component';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
 import { CabecalhoComponent } from '../../componentes/cabecalho/cabecalho.component';
+import { ContainerComponent } from '../../componentes/container/container.component';
+import { SeparadorComponent } from '../../componentes/separador/separador.component';
+import { ContatoComponent } from '../../componentes/contato/contato.component';
 
 interface Contato {
   id: number
@@ -10,22 +15,18 @@ interface Contato {
 }
 
 import agenda from '../../agenda.json';
-import { FormularioContatoComponent } from '../../paginas/formulario-contato/formulario-contato.component';
-import { SeparadorComponent } from '../../componentes/separador/separador.component';
-import { ContatoComponent } from '../../componentes/contato/contato.component';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-lista-contatos',
   standalone: true,
   imports: [
+    CommonModule,
     ContainerComponent, 
     CabecalhoComponent, 
     SeparadorComponent,
     ContatoComponent,
     FormsModule,
-    FormularioContatoComponent
+    RouterLink
   ],
   templateUrl: './lista-contatos.component.html',
   styleUrl: './lista-contatos.component.css'

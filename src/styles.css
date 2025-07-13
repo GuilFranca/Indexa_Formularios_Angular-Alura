@@ -5,6 +5,9 @@
 /* Importando font Zen Dots */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
+/* Importando a biblioteca Remixicon */
+@import url("https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css");
+
 body {
     background: linear-gradient(180deg, #3D88FD 0%, #E7F1FF 100%);
     margin: 0;

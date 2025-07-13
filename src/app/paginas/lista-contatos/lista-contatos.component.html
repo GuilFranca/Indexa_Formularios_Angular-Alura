@@ -8,6 +8,13 @@
     [(ngModel)]='filtroPorTexto'
   >
 
+  <section class="adicionar-contato">
+    <button class="adicionar-contatobutton" routerLink="/formulario">
+      <img src="assets/images/plus.png" alt="">
+      <span>Adicionar contato</span>
+    </button>
+  </section>
+
   <!-- Percorre o string e para cada letra irá criar um separador -->
   @for (letra of alfabeto; track letra) {
 

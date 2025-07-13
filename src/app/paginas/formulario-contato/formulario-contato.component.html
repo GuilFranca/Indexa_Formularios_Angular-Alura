@@ -28,6 +28,15 @@
             placeholder="Digite o nome do contato"
             formControlName="nome"
         />
+        <!-- Diretiva if -->
+        <!-- ? é o operador de navegação segura -->
+        <!-- Verifica se o campo nome do formulário possui um erro -->
+        <!-- touched verifica se o campo já foi tocado -->
+        @if (contatoForm.get('nome')?.errors && contatoForm.get('nome')?.touched) {
+        <div class="mensagem-erro">
+            Campo obrigatório
+        </div>
+        }
 
         <label for="telefone">Telefone</label>
         <input
@@ -36,6 +45,11 @@
             placeholder="Digite o telefone do contato"
             formControlName="telefone"
         />
+        @if (contatoForm.get('telefone')?.errors && contatoForm.get('telefone')?.touched) {
+            <div class="mensagem-erro">
+                Campo obrigatório
+            </div>
+        }
 
         <label for="email">E-mail</label>
         <input
@@ -44,6 +58,16 @@
             placeholder="Digite o endereço de e-mail do contato"
             formControlName="email"
         />
+        @if (contatoForm.get('email')?.errors?.['required'] && contatoForm.get('email')?.touched) {
+            <div class="mensagem-erro">
+                Campo obrigatório
+            </div>
+        }
+        @if (contatoForm.get('email')?.errors?.['email'] && contatoForm.get('email')?.touched) {
+            <div class="mensagem-erro">
+                E-mail inválido
+            </div>
+        }
 
         <app-separador></app-separador>
         
@@ -76,7 +100,12 @@
 
         <section class="botoes">
             <button (click)="cancelar()" class="botao-cancelar" type="button">Cancelar</button>
-            <button class="botao-salvar" type="submit">Salvar</button>
+            <!-- "[]" prober bind associando a view ao modelo -->
+            <button
+                [disabled]="contatoForm.invalid"
+                [ngClass]="contatoForm.valid ? 'botao-salvar' : 'botao-desabilitado'"
+                type="submit">Salvar contato
+            </button>
         </section>
 
     </form>

@@ -33,11 +33,7 @@ export class FormularioContatoComponent {
   }
 
   salvarContato() {
-    if (this.contatoForm.valid) {
-      console.log(this.contatoForm.value);
-    } else {
-      console.log('Erro');
-    }
+    console.log(this.contatoForm.get('email')?.errors);
   }
 
   cancelar() {

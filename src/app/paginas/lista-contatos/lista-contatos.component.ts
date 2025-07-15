@@ -14,7 +14,8 @@ interface Contato {
   telefone: string
 }
 
-import agenda from '../../agenda.json';
+// import agenda from '../../agenda.json';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-lista-contatos',
@@ -33,9 +34,17 @@ import agenda from '../../agenda.json';
 })
 export class ListaContatosComponent {
   alfabeto: string = 'abcdefghijklmnopqrstuvwxyz';
-  contatos: Contato[] = agenda;
+  contatos: Contato[] = [];
 
   filtroPorTexto : string = '';
+
+  
+  constructor(private contatoService: ContatoService) {
+
+    this.contatos = this.contatoService.obterContatos()
+
+  }
+
   filtrarContatosPorTexto(): Contato[] {
 
     if (!this.filtroPorTexto) {

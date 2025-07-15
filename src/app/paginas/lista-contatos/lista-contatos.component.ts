@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -32,17 +32,17 @@ import { ContatoService } from '../../services/contato.service';
   templateUrl: './lista-contatos.component.html',
   styleUrl: './lista-contatos.component.css'
 })
-export class ListaContatosComponent {
+export class ListaContatosComponent implements OnInit {
   alfabeto: string = 'abcdefghijklmnopqrstuvwxyz';
   contatos: Contato[] = [];
 
   filtroPorTexto : string = '';
 
-  
-  constructor(private contatoService: ContatoService) {
+  // O construtor fica responsável apenas pela injeção de depêndencias
+  constructor(private contatoService: ContatoService) {}
 
+  ngOnInit() {
     this.contatos = this.contatoService.obterContatos()
-
   }
 
   filtrarContatosPorTexto(): Contato[] {

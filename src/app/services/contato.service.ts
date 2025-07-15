@@ -44,4 +44,11 @@ export class ContatoService {
     return this.contatos;
   }
   
+  salvarContato(contato: Contato) {
+    // Adiciona o novo contato na lista contatos
+    this.contatos.push(contato);
+    // Adiciona a nova lista de contatos no localStorage transformando a lista de contatos em string
+    localStorage.setItem('contatos', JSON.stringify(this.contatos))
+  }
+
 }

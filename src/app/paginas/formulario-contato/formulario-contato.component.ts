@@ -4,6 +4,7 @@ import { ContainerComponent } from '../../componentes/container/container.compon
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-formulario-contato',
@@ -23,6 +24,9 @@ export class FormularioContatoComponent implements OnInit {
   // Agrupamento de campos que irá gerar um formulário
   contatoForm!: FormGroup;
 
+  // Injeção do ContatoService para salvar novo contato
+  constructor(private contatoService: ContatoService) {}
+
   ngOnInit() {
     this.inicializarFormulário();
   }
@@ -39,7 +43,8 @@ export class FormularioContatoComponent implements OnInit {
   }
 
   salvarContato() {
-    console.log(this.contatoForm.get('email')?.errors);
+    const novoContato = this.contatoForm.value;
+    this.contatoService.salvarContato(novoContato);
   }
 
   cancelar() {

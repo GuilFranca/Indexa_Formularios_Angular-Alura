@@ -26,10 +26,13 @@ export class ContatoService {
     //Tentar obter os dados do local storage
     const contatosLocalStorageString = localStorage.getItem('contatos');
     // JSON.pase transforma as strings em objetos
-    const contatosLocalStorage = contatosLocalStorageString ? JSON.parse(contatosLocalStorageString) : null;
+    const contatosLocalStorage = 
+      contatosLocalStorageString ? JSON.parse(contatosLocalStorageString) : null;
 
     // Recebe contatosLocalStorage ou nulo, caso não tenha nada
-    this.contatos = contatosLocalStorage || null;
+    if (contatosLocalStorage !== null) {
+      this.contatos = contatosLocalStorage || null;
+    }
 
     // Salvar os contatos no local storage
     // stringify transforma o objeto em string pro local storage
@@ -38,7 +41,7 @@ export class ContatoService {
   }
 
   obterContatos() {
-    return this.contatos
+    return this.contatos;
   }
   
 }
